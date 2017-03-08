@@ -28,8 +28,17 @@ def get_token():
 
 def get_userinfo(tokendata):
     token = tokendata['access_token']
-    post_data = 'Authorization: Bearer ' + token
-    respon = requests.get('https://api.korbit.co.kr/v1/user/info', data=post_data)
+    headers = {'Authorization': 'Bearer ' + token}
+    respon = requests.get('https://api.korbit.co.kr/v1/user/info', headers=headers)
+
+    print(respon)
+    info = respon.json()
+    print(info)
+
+def get_ticker():
+    params = {'currency_pair': 'btc_krw'}
+    respon = requests.get("https://api.korbit.co.kr/v1/ticker/detailed", params=params)
+
     print(respon)
     info = respon.json()
     print(info)
@@ -37,5 +46,6 @@ def get_userinfo(tokendata):
 
 
 if __name__ == '__main__':
-    tokendata = get_token()
-    get_userinfo(tokendata)
+    #tokendata = get_token()
+    #get_userinfo(tokendata)
+    get_ticker()
