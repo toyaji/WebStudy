@@ -1,6 +1,4 @@
-import oauth2
 import requests
-from requests import auth
 
 #코빗 토큰 얻기 - 다이렉트 인증으로 바이 안에다가 유저명이랑 비번 다 집어넣음
 
@@ -46,6 +44,6 @@ def get_ticker():
 
 
 if __name__ == '__main__':
-    #tokendata = get_token()
-    #get_userinfo(tokendata)
+    tokendata = get_token()
+    get_userinfo(tokendata)
     get_ticker()
